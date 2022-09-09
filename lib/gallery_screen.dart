@@ -26,13 +26,16 @@ class _GalleryScreenState extends State<GalleryScreen> {
         context: context,
         builder: (ctx) {
           return AlertDialog(
+            backgroundColor: Color(0xFFFDEEDC),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30),
             ),
             title: Column(
               children: [
                 Text('Alert'),
-                Divider(),
+                Divider(
+                  color: Color(0xFFE38B29),
+                ),
               ],
             ),
             content: Text('Do you want to confirm the deletion'),
@@ -41,14 +44,24 @@ class _GalleryScreenState extends State<GalleryScreen> {
                 onPressed: () {
                   Navigator.pop(ctx);
                 },
-                child: Text('Cancel'),
+                child: Text(
+                  'Cancel',
+                  style: TextStyle(
+                    color: Color(0xFFE38B29),
+                  ),
+                ),
               ),
               TextButton(
                 onPressed: () async {
                   await imageBox!.delete(key);
                   Navigator.pop(ctx);
                 },
-                child: Text('Ok'),
+                child: Text(
+                  'Ok',
+                  style: TextStyle(
+                    color: Color(0xFFE38B29),
+                  ),
+                ),
               ),
             ],
           );

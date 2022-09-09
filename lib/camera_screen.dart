@@ -24,7 +24,7 @@ class _CameraScreenState extends State<CameraScreen> {
   }
 
   Future<void> pickImageCamera() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    final image = await ImagePicker().pickImage(source: ImageSource.camera);
     if (image == null) {
       return;
     }
@@ -53,13 +53,16 @@ class _CameraScreenState extends State<CameraScreen> {
         context: context,
         builder: (ctx) {
           return AlertDialog(
+            backgroundColor: const Color(0xFFFDEEDC),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30),
             ),
             title: Column(
               children: const [
                 Text('Alert'),
-                Divider(),
+                Divider(
+                  color: Color(0xFFE38B29),
+                ),
               ],
             ),
             content: const Text('Image added successfully to the database'),
@@ -69,7 +72,12 @@ class _CameraScreenState extends State<CameraScreen> {
                   Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (ctx) => GalleryScreen()));
                 },
-                child: const Text('Ok'),
+                child: const Text(
+                  'Ok',
+                  style: TextStyle(
+                    color: Color(0xFFE38B29),
+                  ),
+                ),
               )
             ],
           );
